@@ -1,0 +1,12 @@
+/**
+ * src/styles/settings.scss
+ *
+ * Configures SASS variables and Vuetify overwrites
+ */
+// https://vuetifyjs.com/features/sass-variables/`
+@use 'vuetify/settings' with (
+    $body-font-family: 'Open Sans',
+);
+
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
