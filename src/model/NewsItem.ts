@@ -1,11 +1,11 @@
 export class NewsItem {
-  id: number;
+  id = 0;
 
-  multimedia: string;
+  multimedia = '';
 
-  description: string;
+  description = '';
 
-  link: string;
+  link = '';
 
   constructor(data?: Partial<NewsItem>) {
     if (data) {

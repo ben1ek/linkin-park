@@ -17,7 +17,6 @@
 
 <script lang="ts">
 import { Component, Vue, toNative } from 'vue-facing-decorator';
-import { useDisplay } from 'vuetify';
 
 @Component({
     name: 'ConcertEventsPopup',
@@ -27,9 +26,6 @@ class ConcertEventsPopup extends Vue {
     window.open('https://www.facebook.com/photo/?fbid=1159807695513133&set=a.598317274995514', '_blank');
   }
 
-  get isMobile(): boolean {
-    return useDisplay().mobile;
-  }
 }
 
 export default toNative(ConcertEventsPopup)

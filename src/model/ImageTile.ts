@@ -1,11 +1,11 @@
 export class ImageTile {
-  src: string;
+  src = '';
 
-  title: string;
+  title = '';
 
-  description: string;
+  description = '';
 
-  link: string;
+  link = '';
 
   constructor(data?: Partial<ImageTile>) {
     if (data) {

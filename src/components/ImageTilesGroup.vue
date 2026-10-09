@@ -22,16 +22,16 @@ import { ImageTile } from '@/model/ImageTile';
 })
 class ImageTilesGroup extends Vue {
   @Prop({ required: true })
-  tiles: ImageTile[];
+  tiles!: ImageTile[];
 
   @Prop()
-  imageWidth: string;
+  imageWidth!: string;
 
   @Prop()
-  imageHeight: string;
+  imageHeight!: string;
 
   @Prop()
-  imageAspectRatio: string;
+  imageAspectRatio!: string;
 }
 
 export default toNative(ImageTilesGroup)

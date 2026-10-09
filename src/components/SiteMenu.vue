@@ -25,7 +25,7 @@ import { EnumEventType } from '../enum/EnumEventType';
 })
 class SiteMenu extends Vue {
   @Prop()
-  isMobile: boolean;
+  isMobile!: boolean;
 
   mobileNavigation = false;
 

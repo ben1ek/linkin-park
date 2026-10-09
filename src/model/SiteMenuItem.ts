@@ -1,9 +1,9 @@
 export class SiteMenuItem {
-  name: string;
+  name = '';
 
-  icon: string;
+  icon = '';
 
-  address: string;
+  address = '';
 
   active?: boolean;
 

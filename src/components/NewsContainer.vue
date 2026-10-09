@@ -10,31 +10,37 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, toNative, Prop } from 'vue-facing-decorator';
+import { Component, Vue, toNative } from 'vue-facing-decorator';
 import { NewsItem } from '../model/NewsItem';
 
 @Component({
     name: 'NewsContainer',
 })
 class NewsContainer extends Vue {
-  // @Prop()
-  // newsItems: NewsItem[];
-
-  async created() {
-    await window.fbAsyncInit();
-        FB.init({
-        appId            : 2866893286824757,
-        xfbml            : true,
-        version          : 'v21.0'
-    });
-    FB.api(
-    "/LPPoland/feed",
-    function (response) {
-      if (response && !response.error) {
-        /* handle the result */
-      }
+  created() {
+    const loadFeed = () => {
+      const sdk = window.FB;
+      if (!sdk) return;
+      sdk.init({
+        appId: '2866893286824757',
+        xfbml: true,
+        version: 'v21.0',
+      });
+      sdk.api('/LPPoland/feed', (response) => {
+        if (response && !response.error) {
+          /* handle the result */
+        }
+      });
+    };
+    if (window.FB) {
+      loadFeed();
+    } else {
+      const previousInit = window.fbAsyncInit;
+      window.fbAsyncInit = () => {
+        previousInit?.();
+        loadFeed();
+      };
     }
-);
   }
 
   // MOCKED:

@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-bind="$attrs" v-on="$listeners" :model-value="showDialog" :max-width="maxWidth" content-class="popup">
+  <v-dialog v-bind="$attrs" :model-value="showDialog" :max-width="maxWidth" content-class="popup">
     <v-card :max-width="maxWidth">
       <v-btn icon="mdi-close" :ripple="false" variant="plain" @click="hidePopup" class="popup_closeButton position-absolute"/>
       <slot />
@@ -15,10 +15,10 @@ import { Component, Vue, Prop, Watch, toNative } from 'vue-facing-decorator';
 })
 class Popup extends Vue {
   @Prop()
-  showPopup: boolean;
+  showPopup!: boolean;
 
   @Prop()
-  maxWidth: string;
+  maxWidth!: string;
 
   showDialog = false;
 

@@ -10,16 +10,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, toNative } from 'vue-facing-decorator';
+import { Component, Vue, Setup, toNative } from 'vue-facing-decorator';
 import { useDisplay } from 'vuetify';
 
 @Component({
     name: 'MainLayout',
 })
 class MainLayout extends Vue {
-  get isMobile(): boolean {
-    return useDisplay().mobile;
-  }
+  @Setup(() => useDisplay().mobile)
+  isMobile!: boolean;
 }
 
 export default toNative(MainLayout)

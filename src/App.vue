@@ -5,7 +5,6 @@
     </v-app-bar>
     <v-main :max-width="1280" width="100%" class="mx-auto px-5">
       <router-view />
-      <concert-events-popup />
     </v-main>
     <v-footer app height="50">
       <site-footer />
@@ -15,9 +14,7 @@
 
 <script lang="ts" setup>
   import '@/styles/main.scss';
-  import { useDisplay } from 'vuetify';
 
-  const { mobile } = useDisplay();
 </script>
 
 <style lang="scss">

@@ -1,5 +1,5 @@
 <template>
-  <div :id="newsItem.id" class="news d-flex">
+  <div :id="String(newsItem.id)" class="news d-flex">
     <div class="news_multimediaContainer">
       <v-img :src="newsItem.multimedia" :width="250" :height="200" cover @click="openArticle" />
     </div>
@@ -21,7 +21,7 @@ import { NewsItem } from '@/model/NewsItem';
 })
 class News extends Vue {
   @Prop()
-  newsItem: NewsItem;
+  newsItem!: NewsItem;
 
   created(): void {
     console.log(this.newsItem);

@@ -18,25 +18,25 @@ import { Component, Vue, Prop, toNative } from 'vue-facing-decorator';
 })
 class ImageTile extends Vue {
   @Prop({ required: true })
-  src: string;
+  src!: string;
 
   @Prop({ default: '100%' })
-  imageWidth: string;
+  imageWidth!: string;
 
   @Prop({ default: '220px' })
-  imageHeight: string;
+  imageHeight!: string;
 
   @Prop({ default: 'auto' })
-  aspectRatio: string;
+  aspectRatio!: string;
 
   @Prop()
-  title: string;
+  title!: string;
 
   @Prop()
-  description: string;
+  description!: string;
 
   @Prop()
-  link: string;
+  link!: string;
 
   created() {
     console.log(this.aspectRatio)

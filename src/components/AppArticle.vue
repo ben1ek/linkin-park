@@ -1,6 +1,6 @@
 <template>
   <article class="appArticle">
-    <header class="mb-4">
+    <header v-if="header || description" class="mb-4">
       <h2 v-if="header" v-html="header" class="font-weight-medium" />
       <p v-if="description" v-html="description" class="mt-2" />
     </header>
@@ -16,10 +16,10 @@ import { Component, Vue, Prop, toNative } from 'vue-facing-decorator';
 })
 class AppArticle extends Vue {
   @Prop()
-  header: string;
+  header!: string;
 
   @Prop()
-  description: string;
+  description!: string;
 }
 
 export default toNative(AppArticle)
