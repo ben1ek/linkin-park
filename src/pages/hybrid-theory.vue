@@ -13,6 +13,7 @@
 import { Component, Vue, toNative } from 'vue-facing-decorator';
 import { DiscographyAlbum } from '../model/DiscographyAlbum';
 import { Song } from '@/model/Song';
+import cover from '../assets/studio-albums/hybrid-theroy.webp';
 
 @Component
 class HybridTheory extends Vue {
@@ -21,7 +22,7 @@ class HybridTheory extends Vue {
   }
 
   get album(): DiscographyAlbum {
-    return new DiscographyAlbum({ name: 'Hybrid Theory', yearReleased: 2000, description: this.descripiton, cover: '/src/assets/studio-albums/hybrid-theroy.webp', tracklist: this.tracklist });
+    return new DiscographyAlbum({ name: 'Hybrid Theory', yearReleased: 2000, description: this.descripiton, cover: cover, tracklist: this.tracklist });
   }
 
   get tracklist(): Song[] {
