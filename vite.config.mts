@@ -9,6 +9,20 @@ import svgLoader from 'vite-svg-loader'
 // Utilities
 import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
+import type { Logger } from 'sass'
+
+// Vuetify's virtual entrypoints can bypass Sass quietDeps classification.
+const sassLogger: Logger = {
+  warn(message, options) {
+    const source = options.span?.url?.pathname.replace(/\\/g, '/') ?? ''
+    if (options.deprecation && source.includes('/node_modules/vuetify/')) return
+
+    const kind = options.deprecation ? 'Deprecation Warning' : 'Warning'
+    console.warn(`${kind}: ${message}`)
+    if (options.span) console.warn(options.span.toString())
+    if (options.stack) console.warn(options.stack)
+  },
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -35,6 +49,12 @@ export default defineConfig({
     }),
     svgLoader(),
   ],
+  css: {
+    preprocessorOptions: {
+      scss: { quietDeps: true, logger: sassLogger },
+      sass: { quietDeps: true, logger: sassLogger },
+    },
+  },
   define: { 'process.env': {} },
   resolve: {
     alias: {
