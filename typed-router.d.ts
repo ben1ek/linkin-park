@@ -58,6 +58,20 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/meteora': RouteRecordInfo<
+      '/meteora',
+      '/meteora',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/minutes-to-midnight': RouteRecordInfo<
+      '/minutes-to-midnight',
+      '/minutes-to-midnight',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/studio-albums': RouteRecordInfo<
       '/studio-albums',
       '/studio-albums',
@@ -105,6 +119,18 @@ declare module 'vue-router/auto-routes' {
     'src/pages/hybrid-theory.vue': {
       routes:
         | '/hybrid-theory'
+      views:
+        | never
+    }
+    'src/pages/meteora.vue': {
+      routes:
+        | '/meteora'
+      views:
+        | never
+    }
+    'src/pages/minutes-to-midnight.vue': {
+      routes:
+        | '/minutes-to-midnight'
       views:
         | never
     }

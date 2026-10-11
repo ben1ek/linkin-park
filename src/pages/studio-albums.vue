@@ -25,9 +25,9 @@ import fromZero from '../assets/studio-albums/from-zero.webp';
 class StudioAlbums extends Vue {
   get tiles(): ImageTile[] {
     return [
-      new ImageTile({ src: hybridTheory, title: 'Hybrid Theory', description: '2000', link: '/hybrid-theory'}),
-      new ImageTile({ src: meteora, title: 'Meteora', description: '2003'}),
-      new ImageTile({ src: minutesToMidnight, title: 'Minutes To Midnight', description: '2007'}),
+      new ImageTile({ src: hybridTheory, title: 'Hybrid Theory', description: '2000', link: '/hybrid-theory' }),
+      new ImageTile({ src: meteora, title: 'Meteora', description: '2003', link: '/meteora' }),
+      new ImageTile({ src: minutesToMidnight, title: 'Minutes To Midnight', description: '2007', link: '/minutes-to-midnight' }),
       new ImageTile({ src: aThousandSuns, title: 'A Thousand Suns', description: '2010'}),
       new ImageTile({ src: livingThings, title: 'Living Things', description: '2012'}),
       new ImageTile({ src: theHuntingParty, title: 'The Hunting Party', description: '2014'}),
