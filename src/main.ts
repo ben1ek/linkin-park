@@ -59,6 +59,14 @@ const i18n = createI18n({
         underConstuctionDescription: 'Pracujemy nad stworzeniem treści dla tej podstrony.',
       },
       readMore: 'Czytaj więcej',
+      album: {
+        released: 'Data wydania',
+        description: 'Opis',
+        tracklist: 'Lista utworów',
+      },
+      hybridTheory: {
+        description: 'Hybrid Theory to debiutancki album Linkin Park, wydany 24 października 2000 roku nakładem wytwórni Warner Bros. Records. Z albumu Hybrid Theory pochodzą cztery przebojowe single: "One Step Closer", "Crawling", "Papercut" i "In The End". Utwory takie jak "Points Of Authority", "Pushing Me Away" i "My December" również trafiły do stacji radiowych, mimo że nie zostały oficjalnie wydane jako single. Album dotarł jedynie do 2. miejsca na liście Billboard 200, jednak z czasem stał się najlepiej sprzedającym się debiutanckim albumem XXI wieku.'
+      },
     },
     en: {
       message: {
@@ -100,6 +108,14 @@ const i18n = createI18n({
         underConstuctionDescription: 'We are working on creating content for this subpage.',
       },
       readMore: 'Read More',
+      album: {
+        released: 'Released',
+        description: 'Description',
+        tracklist: 'Tracklist',
+      },
+      hybridTheory: {
+        description: 'Hybrid Theory is Linkin Park\'s debut album, released on October 24, 2000 through Warner Bros. Records. Four successful singles were spawned from Hybrid Theory: "One Step Closer", "Crawling", "Papercut", "In The End", but tracks such as "Points Of Authority", "Pushing Me Away", and "My December" were also sent to radio stations for airplay despite not being officially released as singles. The album only peaked at #2 on the Billboard 200, but it would go on to become the best selling debut album of the 21st century.'
+      },
     },
   },
 });

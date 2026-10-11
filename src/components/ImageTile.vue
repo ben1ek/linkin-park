@@ -38,10 +38,6 @@ class ImageTile extends Vue {
   @Prop()
   link!: string;
 
-  created() {
-    console.log(this.aspectRatio)
-  }
-
   openLink(): void {
     if (!this.link) {
       return;

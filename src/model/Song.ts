@@ -1,7 +1,7 @@
 export class Song {
   name = '';
 
-  lenght = '';
+  length = '';
 
   writers = '';
 

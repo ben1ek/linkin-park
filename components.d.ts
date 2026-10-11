@@ -28,6 +28,8 @@ declare module 'vue' {
     SiteFooter: typeof import('./src/components/SiteFooter.vue')['default']
     SiteLogo: typeof import('./src/components/SiteLogo.vue')['default']
     SiteMenu: typeof import('./src/components/SiteMenu.vue')['default']
+    TracklistAccordion: typeof import('./src/components/TracklistAccordion.vue')['default']
     UnderConstructionAlert: typeof import('./src/components/UnderConstructionAlert.vue')['default']
+    YouTubePlayer: typeof import('./src/components/YouTubePlayer.vue')['default']
   }
 }
