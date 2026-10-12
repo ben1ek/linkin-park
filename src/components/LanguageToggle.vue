@@ -24,6 +24,7 @@ export default toNative(LanguageToggle)
   .languageToggle {
     height: auto !important;
     column-gap: 12px;
+    overflow-x: hidden !important;
     button {
       padding: 0;
       opacity: 0.5;

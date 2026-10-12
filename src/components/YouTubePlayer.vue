@@ -6,13 +6,14 @@
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen
-      style="width: 100%; height: 400px">
+      :style="playerStyle">
     </iframe>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, toNative } from 'vue-facing-decorator';
+import { Component, Vue, Prop, Setup, toNative } from 'vue-facing-decorator';
+import { useDisplay } from 'vuetify';
 
 @Component({
     name: 'YouTubePlayer',
@@ -20,6 +21,13 @@ import { Component, Vue, Prop, toNative } from 'vue-facing-decorator';
 class YouTubePlayer extends Vue {
   @Prop({ required: true })
   url!: string;
+
+  @Setup(() => useDisplay().mobile)
+  isMobile!: boolean;
+
+  get playerStyle(): { width: string, height: string } {
+    return { width: '100%', height: this.isMobile ? '200px' : '400px' };
+  }
 }
 
 export default toNative(YouTubePlayer)
