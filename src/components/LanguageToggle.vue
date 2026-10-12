@@ -38,7 +38,7 @@ export default toNative(LanguageToggle)
       }
       &.v-btn--disabled.v-btn--variant-elevated {
         color: unset;
-        background-clip: unset;
+        background-color: unset;
       }
       .v-btn__overlay, .v-btn__underlay {
         display: none;
