@@ -3,9 +3,9 @@
     <div class="mainLayout_content" :class="{ 'mobile' : isMobile }">
       <slot name="content" />
     </div>
-    <div class="mainLayout_sidebar" :class="{ 'mobile' : isMobile }">
+    <aside class="mainLayout_sidebar" :class="{ 'mobile' : isMobile }">
       <slot name="sidebar" />
-    </div>
+    </aside>
   </div>
 </template>
 

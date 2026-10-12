@@ -22,7 +22,7 @@ class AThousandSuns extends Vue {
   }
 
   get album(): DiscographyAlbum {
-    return new DiscographyAlbum({ name: 'A Thousand Suns', yearReleased: 2010, description: this.descripiton, cover: cover, tracklist: this.tracklist });
+    return new DiscographyAlbum({ name: 'A Thousand Suns', yearReleased: 2010, description: this.descripiton, cover: cover, url: 'https://linkinpedia.com/wiki/A_Thousand_Suns', tracklist: this.tracklist });
   }
 
   get tracklist(): Song[] {

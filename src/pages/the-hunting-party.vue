@@ -22,7 +22,7 @@ class TheHuntingParty extends Vue {
   }
 
   get album(): DiscographyAlbum {
-    return new DiscographyAlbum({ name: 'The Hunting Party', yearReleased: 2014, description: this.descripiton, cover: cover, tracklist: this.tracklist });
+    return new DiscographyAlbum({ name: 'The Hunting Party', yearReleased: 2014, description: this.descripiton, cover: cover, url: 'https://linkinpedia.com/wiki/The_Hunting_Party', tracklist: this.tracklist });
   }
 
   get tracklist(): Song[] {

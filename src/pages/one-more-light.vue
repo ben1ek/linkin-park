@@ -22,7 +22,7 @@ class OneMoreLight extends Vue {
   }
 
   get album(): DiscographyAlbum {
-    return new DiscographyAlbum({ name: 'One More Light', yearReleased: 2017, description: this.descripiton, cover: cover, tracklist: this.tracklist });
+    return new DiscographyAlbum({ name: 'One More Light', yearReleased: 2017, description: this.descripiton, cover: cover, url: 'https://linkinpedia.com/wiki/One_More_Light', tracklist: this.tracklist });
   }
 
   get tracklist(): Song[] {

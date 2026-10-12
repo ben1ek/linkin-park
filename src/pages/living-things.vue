@@ -22,7 +22,7 @@ class LivingThings extends Vue {
   }
 
   get album(): DiscographyAlbum {
-    return new DiscographyAlbum({ name: 'Living Things', yearReleased: 2012, description: this.descripiton, cover: cover, tracklist: this.tracklist });
+    return new DiscographyAlbum({ name: 'Living Things', yearReleased: 2012, description: this.descripiton, cover: cover, url: 'https://linkinpedia.com/wiki/Living_Things', tracklist: this.tracklist });
   }
 
   get tracklist(): Song[] {

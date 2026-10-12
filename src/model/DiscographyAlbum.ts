@@ -9,6 +9,8 @@ export class DiscographyAlbum {
 
   description = '';
 
+  url = 'https://linkinpedia.com/';
+
   tracklist: Song[] = [];
 
   constructor(data?: Partial<DiscographyAlbum>) {

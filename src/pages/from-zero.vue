@@ -22,7 +22,7 @@ class FromZero extends Vue {
   }
 
   get album(): DiscographyAlbum {
-    return new DiscographyAlbum({ name: 'From Zero', yearReleased: 2024, description: this.descripiton, cover: cover, tracklist: this.tracklist });
+    return new DiscographyAlbum({ name: 'From Zero', yearReleased: 2024, description: this.descripiton, cover: cover, url: 'https://linkinpedia.com/wiki/From_Zero', tracklist: this.tracklist });
   }
 
   get tracklist(): Song[] {

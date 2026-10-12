@@ -22,7 +22,7 @@ class HybridTheory extends Vue {
   }
 
   get album(): DiscographyAlbum {
-    return new DiscographyAlbum({ name: 'Hybrid Theory', yearReleased: 2000, description: this.descripiton, cover: cover, tracklist: this.tracklist });
+    return new DiscographyAlbum({ name: 'Hybrid Theory', yearReleased: 2000, description: this.descripiton, cover: cover, url: 'https://linkinpedia.com/wiki/Hybrid_Theory', tracklist: this.tracklist });
   }
 
   get tracklist(): Song[] {

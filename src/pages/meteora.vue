@@ -22,7 +22,7 @@ class Meteora extends Vue {
   }
 
   get album(): DiscographyAlbum {
-    return new DiscographyAlbum({ name: 'Meteora', yearReleased: 2003, description: this.descripiton, cover: cover, tracklist: this.tracklist });
+    return new DiscographyAlbum({ name: 'Meteora', yearReleased: 2003, description: this.descripiton, cover: cover, url: 'https://linkinpedia.com/wiki/Meteora', tracklist: this.tracklist });
   }
 
   get tracklist(): Song[] {

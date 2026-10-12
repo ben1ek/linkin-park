@@ -88,6 +88,7 @@ const i18n = createI18n({
       minutesToMidnight: {
         description: 'Minutes To Midnight to trzeci album studyjny amerykańskiego zespołu rockowego Linkin Park, wydany 14 maja 2007 roku nakładem wytwórni Warner Bros. Records. Z albumu pochodzi pięć singli: "What I\'ve Done", "Bleed It Out", "Shadow Of The Day", "Given Up" i "Leave Out All The Rest". Na tym albumie zespół odszedł od swojego charakterystycznego brzmienia nu-metalowego i po raz pierwszy na tak dużą skalę zaczął eksperymentować z różnymi gatunkami muzycznymi. Album zadebiutował na 1. miejscu list przebojów, stając się trzecim z rzędu albumem zespołu, który osiągnął szczyt notowań.',
       },
+      source: 'Źródło',
     },
     en: {
       message: {
@@ -158,6 +159,7 @@ const i18n = createI18n({
       minutesToMidnight: {
         description: 'Minutes To Midnight is American rock band Linkin Park\'s third studio album, released on May 14, 2007, through Warner Bros. Records. It spawned five singles: "What I\'ve Done", "Bleed It Out", "Shadow Of The Day", "Given Up", and "Leave Out All The Rest". The album sees the band\'s departure from their signature nu-metal sound, and is the first to feature the band\'s big experimentation with genres. The album debuted at #1 on the charts, making it the band\'s third consecutive #1 record.',
       },
+      source: 'Source',
     },
   },
 });

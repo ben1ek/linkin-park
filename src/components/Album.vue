@@ -10,6 +10,11 @@
     <div class="album_description pa-4 mb-2">
       <h4 class="album_descriptionHeader font-weight-bold mb-4">{{ $t('album.description') }}</h4>
       <span class="album_descriptionText">{{ album.description }}</span>
+      <div class="mt-4">
+        <v-btn variant="outlined" density="comfortable" append-icon="mdi-open-in-new" :ripple="false" @click="openSourcePage" class="album_sourceButton">
+          <span class="text-capitalize">{{ $t('source') }}</span>
+        </v-btn>
+      </div>
     </div>
     <div class="album_tracklist pa-4">
       <h4 class="album_descriptionHeader font-weight-bold mb-4">{{ $t('album.tracklist') }}</h4>
@@ -38,6 +43,10 @@ import { DiscographyAlbum } from '../model/DiscographyAlbum';
 class Album extends Vue {
   @Prop({ required: true })
   album!: DiscographyAlbum;
+
+  openSourcePage(): void {
+    window.open(this.album.url, '_blank');
+  }
 }
 
 export default toNative(Album)
@@ -64,6 +73,15 @@ export default toNative(Album)
   &_descriptionText {
     font-size: 14px;
     text-align: justify;
+  }
+  &_sourceButton {
+    .v-btn__content span {
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+    .v-btn__append i {
+        font-size: 14px;
+    }
   }
   &_trackName {
     font-size: 14px;

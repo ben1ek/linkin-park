@@ -22,7 +22,7 @@ class MinutesToMidnight extends Vue {
   }
 
   get album(): DiscographyAlbum {
-    return new DiscographyAlbum({ name: 'Minutes To Midnight', yearReleased: 2007, description: this.descripiton, cover: cover, tracklist: this.tracklist });
+    return new DiscographyAlbum({ name: 'Minutes To Midnight', yearReleased: 2007, description: this.descripiton, cover: cover, url: 'https://linkinpedia.com/wiki/Minutes_To_Midnight', tracklist: this.tracklist });
   }
 
   get tracklist(): Song[] {
