@@ -12,7 +12,7 @@
 <script lang="ts">
 import { Component, Vue, toNative } from 'vue-facing-decorator';
 import { NewsItem } from '../model/NewsItem';
-import img1 from '../assets/studio-albums/hybrid-theroy.webp';
+import img1 from '../assets/studio-albums/hybrid-theory.webp';
 
 @Component({
     name: 'NewsContainer',

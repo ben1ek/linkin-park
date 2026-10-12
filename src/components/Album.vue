@@ -17,7 +17,7 @@
         <template v-slot:title="{ item }">
           <div class="d-flex align-center justify-space-between w-100 mr-4">
             <h5 class="album_trackName">{{ item.name }}</h5>
-            <span class="album_trackLength">{{ item.length }}</span>
+            <span class="album_trackLength ml-4">{{ item.length }}</span>
           </div>
         </template>
         <template v-slot:content="{ item }">
@@ -38,14 +38,6 @@ import { DiscographyAlbum } from '../model/DiscographyAlbum';
 class Album extends Vue {
   @Prop({ required: true })
   album!: DiscographyAlbum;
-
-  generateHeaderSlotName(index: string): string {
-      return `header.${index}`;
-  }
-
-  generateContentSlotName(index: string): string {
-      return `content.${index}`;
-  }
 }
 
 export default toNative(Album)

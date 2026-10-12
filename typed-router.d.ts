@@ -30,6 +30,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/a-thousand-suns': RouteRecordInfo<
+      '/a-thousand-suns',
+      '/a-thousand-suns',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/about-band': RouteRecordInfo<
       '/about-band',
       '/about-band',
@@ -51,9 +58,23 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/from-zero': RouteRecordInfo<
+      '/from-zero',
+      '/from-zero',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/hybrid-theory': RouteRecordInfo<
       '/hybrid-theory',
       '/hybrid-theory',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/living-things': RouteRecordInfo<
+      '/living-things',
+      '/living-things',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -72,9 +93,23 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/one-more-light': RouteRecordInfo<
+      '/one-more-light',
+      '/one-more-light',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/studio-albums': RouteRecordInfo<
       '/studio-albums',
       '/studio-albums',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/the-hunting-party': RouteRecordInfo<
+      '/the-hunting-party',
+      '/the-hunting-party',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -98,6 +133,12 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'src/pages/a-thousand-suns.vue': {
+      routes:
+        | '/a-thousand-suns'
+      views:
+        | never
+    }
     'src/pages/about-band.vue': {
       routes:
         | '/about-band'
@@ -116,9 +157,21 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'src/pages/from-zero.vue': {
+      routes:
+        | '/from-zero'
+      views:
+        | never
+    }
     'src/pages/hybrid-theory.vue': {
       routes:
         | '/hybrid-theory'
+      views:
+        | never
+    }
+    'src/pages/living-things.vue': {
+      routes:
+        | '/living-things'
       views:
         | never
     }
@@ -134,9 +187,21 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'src/pages/one-more-light.vue': {
+      routes:
+        | '/one-more-light'
+      views:
+        | never
+    }
     'src/pages/studio-albums.vue': {
       routes:
         | '/studio-albums'
+      views:
+        | never
+    }
+    'src/pages/the-hunting-party.vue': {
+      routes:
+        | '/the-hunting-party'
       views:
         | never
     }
