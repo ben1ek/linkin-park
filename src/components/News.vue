@@ -23,10 +23,6 @@ class News extends Vue {
   @Prop()
   newsItem!: NewsItem;
 
-  created(): void {
-    console.log(this.newsItem);
-  }
-
   openArticle(): void {
     window.open(this.newsItem.link, '_blank');
   }

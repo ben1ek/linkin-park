@@ -1,6 +1,6 @@
 <template>
   <v-btn-toggle v-model="$i18n.locale" class="languageToggle">
-    <v-btn v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale" :height="20" :ripple="false">
+    <v-btn v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale" :height="20" :ripple="false" :disabled="$i18n.locale === locale">
       <img v-if="locale === 'pl'" src="../assets/pl.webp" alt="" class="languageToggle_flagIcon mr-1" />
       <img v-if="locale === 'en'" src="../assets/us.webp" alt="" class="languageToggle_flagIcon mr-1" />
       <span>{{ locale }}</span>
@@ -35,6 +35,10 @@ export default toNative(LanguageToggle)
       }
       &.v-btn--active {
         opacity: 1;
+      }
+      &.v-btn--disabled.v-btn--variant-elevated {
+        color: unset;
+        background-clip: unset;
       }
       .v-btn__overlay, .v-btn__underlay {
         display: none;
