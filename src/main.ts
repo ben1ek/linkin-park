@@ -23,6 +23,7 @@ const i18n = createI18n({
       message: {
         hello: 'hello world',
       },
+      newsFeed: { loading: 'Ładowanie aktualności…', error: 'Nie udało się pobrać aktualności.', retry: 'Spróbuj ponownie', empty: 'Brak aktualności.', stale: 'Wyświetlamy ostatnio pobrane wpisy. Aktualizacja jest chwilowo niedostępna.', more: 'Pokaż więcej' },
       siteMenu: {
         news: 'Aktualności',
         aboutBand: 'O zespole',
@@ -94,6 +95,7 @@ const i18n = createI18n({
       message: {
         hello: 'こんにちは、世界',
       },
+      newsFeed: { loading: 'Loading news…', error: 'Could not load news.', retry: 'Try again', empty: 'No news yet.', stale: 'Showing previously fetched posts. Updates are temporarily unavailable.', more: 'Show more' },
       siteMenu: {
         news: 'News',
         aboutBand: 'About band',

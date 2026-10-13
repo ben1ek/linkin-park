@@ -1,5 +1,7 @@
 export class NewsItem {
-  id = 0;
+  id = '';
+
+  publishedAt = '';
 
   multimedia = '';
 

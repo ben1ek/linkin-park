@@ -1,74 +1,76 @@
 <template>
-  <div class="newsContainer d-flex flex-column">
-    <div class="newsContainer_newsItems d-flex flex-column">
-      <news v-for="(newsItem, index) in newsItems" :key="index" :newsItem="newsItem" />
+  <div class="newsContainer d-flex flex-column" :aria-busy="loading">
+    <div v-if="loading" role="status" class="text-center py-6">
+      <v-progress-circular indeterminate class="mr-3" />
+      <span>{{ $t('newsFeed.loading') }}</span>
     </div>
-    <v-btn append-icon="mdi-chevron-triple-right" :ripple="false" variant="outlined" class="newsContainer_pagination mx-auto mt-6">
-      {{ $t('readMore') }}
-    </v-btn>
+    <error-alert v-else-if="error" :alert-text="$t('newsFeed.error')" with-button :button-text="$t('newsFeed.retry')" @button-click="loadNews" />
+    <template v-else>
+      <v-alert v-if="stale" type="info" variant="tonal" border="start" class="mb-4">{{ $t('newsFeed.stale') }}</v-alert>
+      <p v-if="!newsItems.length" role="status">{{ $t('newsFeed.empty') }}</p>
+      <div class="newsContainer_newsItems d-flex flex-column">
+        <news v-for="newsItem in newsItems.slice(0, visibleCount)" :key="newsItem.id" :newsItem="newsItem" />
+      </div>
+      <v-btn v-if="visibleCount < newsItems.length" append-icon="mdi-chevron-triple-right" :ripple="false" variant="outlined" class="mx-auto mt-6" @click="visibleCount += 6">
+        {{ $t('newsFeed.more') }}
+      </v-btn>
+    </template>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, toNative } from 'vue-facing-decorator';
 import { NewsItem } from '../model/NewsItem';
-import img1 from '../assets/studio-albums/hybrid-theory.webp';
+import { fetchNews } from '../services/NewsService';
 
-@Component({
-    name: 'NewsContainer',
-})
+@Component({ name: 'NewsContainer' })
 class NewsContainer extends Vue {
+  newsItems: NewsItem[] = [];
+
+  visibleCount = 6;
+
+  loading = true;
+
+  error = false;
+
+  stale = false;
+
+  controller: AbortController | null = null;
+
   created() {
-    // const loadFeed = () => {
-    //   const sdk = window.FB;
-    //   if (!sdk) return;
-    //   sdk.init({
-    //     appId: '2866893286824757',
-    //     xfbml: true,
-    //     version: 'v21.0',
-    //   });
-    //   sdk.api('/LPPoland/feed', (response) => {
-    //     if (response && !response.error) {
-    //       /* handle the result */
-    //     }
-    //   });
-    // };
-    // if (window.FB) {
-    //   loadFeed();
-    // } else {
-    //   const previousInit = window.fbAsyncInit;
-    //   window.fbAsyncInit = () => {
-    //     previousInit?.();
-    //     loadFeed();
-    //   };
-    // }
+    void this.loadNews();
   }
 
-  // MOCKED:
-  get newsItems(): NewsItem[] {
-    return [
-      new NewsItem({ id: 1, multimedia: img1,  description: 'Use this endpoint to get and publish to a Page. The Page Feed encompasses any interactions with a Facebook Page including: posts and links published by this Page, visitors to this Page, and public posts in which the Page has been tagged.' }),
-      new NewsItem({ id: 2, multimedia: img1,  description: 'Use this endpoint to get and publish to a Page. The Page Feed encompasses any interactions with a Facebook Page including: posts and links published by this Page, visitors to this Page, and public posts in which the Page has been tagged.' }),
-      new NewsItem({ id: 3, multimedia: img1,  description: 'Use this endpoint to get and publish to a Page. The Page Feed encompasses any interactions with a Facebook Page including: posts and links published by this Page, visitors to this Page, and public posts in which the Page has been tagged.' }),
-      new NewsItem({ id: 4, multimedia: img1,  description: 'Use this endpoint to get and publish to a Page. The Page Feed encompasses any interactions with a Facebook Page including: posts and links published by this Page, visitors to this Page, and public posts in which the Page has been tagged.' }),
-      new NewsItem({ id: 5, multimedia: img1,  description: 'Use this endpoint to get and publish to a Page. The Page Feed encompasses any interactions with a Facebook Page including: posts and links published by this Page, visitors to this Page, and public posts in which the Page has been tagged.' }),
-      new NewsItem({ id: 6, multimedia: img1,  description: 'Use this endpoint to get and publish to a Page. The Page Feed encompasses any interactions with a Facebook Page including: posts and links published by this Page, visitors to this Page, and public posts in which the Page has been tagged.' }),
-    ];
+  beforeUnmount() {
+    this.controller?.abort();
+  }
+
+  async loadNews(): Promise<void> {
+    this.controller?.abort();
+    const controller = new AbortController();
+    this.controller = controller;
+    this.loading = true;
+    this.error = false;
+    // Allow time for a sleeping Render instance to start.
+    const timeout = window.setTimeout(() => controller.abort(), 90_000);
+    try {
+      const result = await fetchNews(controller.signal);
+      this.newsItems = result.data;
+      this.stale = result.stale;
+      this.visibleCount = 6;
+    } catch {
+      this.error = true;
+    } finally {
+      window.clearTimeout(timeout);
+      this.loading = false;
+    }
   }
 }
-
-export default toNative(NewsContainer)
+export default toNative(NewsContainer);
 </script>
 
 <style lang="scss">
-  .newsContainer {
-    &_newsItems {
-      row-gap: 20px;
-    }
-    &_pagination {
-      .v-btn__content {
-        line-height: 1;
-      }
-    }
-  }
+.newsContainer_newsItems {
+  row-gap: 20px;
+}
 </style>

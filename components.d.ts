@@ -15,6 +15,7 @@ declare module 'vue' {
     Album: typeof import('./src/components/Album.vue')['default']
     AppArticle: typeof import('./src/components/AppArticle.vue')['default']
     ConcertEventsPopup: typeof import('./src/components/ConcertEventsPopup.vue')['default']
+    ErrorAlert: typeof import('./src/components/ErrorAlert.vue')['default']
     ImageTile: typeof import('./src/components/ImageTile.vue')['default']
     ImageTilesGroup: typeof import('./src/components/ImageTilesGroup.vue')['default']
     LanguageToggle: typeof import('./src/components/LanguageToggle.vue')['default']
