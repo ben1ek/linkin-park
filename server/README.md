@@ -73,8 +73,7 @@ bez paginacji starszych postów w tej wersji.
 
 Brak tekstu, zdjęcia lub linku oznacza pusty string. full_picture może być
 miniaturą wideo; nie jest adresem filmu. Tekst należy wyświetlać jako tekst,
-bez v-html. Identyfikator jest stringiem — przy podłączaniu frontendu trzeba
-zmienić obecne liczbowe NewsItem.id oraz dodać publishedAt.
+bez v-html. Frontend używa identyfikatora tekstowego i pola publishedAt.
 
 Odpowiedzi: 400 (parametry), 403 (niedozwolony Origin), 404, 405 oraz 503
 (brak dostępnych danych). Surowe odpowiedzi Meta i linki paginacji nie są zwracane.
@@ -87,4 +86,23 @@ z stale: true. Po tym czasie API zwraca 503. Restart/usypianie usuwa cache;
 nie zapewniamy zachowania danych po restarcie. Każda instancja ma osobny cache.
 Adresy zdjęć Meta są odświeżane wraz z postami; stara miniatura może przestać działać.
 
-Nie wdraża to zmian frontendu ani nie tworzy automatycznie usług w Render.
+Kod nie tworzy automatycznie usług w Render.
+
+## Podłączenie frontendu
+
+Na Render w ustawieniach **Static Site → Environment** dodaj
+VITE_API_BASE_URL=https://ADRES-BACKENDU.onrender.com (sam origin, bez /api/news).
+Zapisz ustawienia i uruchom ponowny build/deploy frontendu, ponieważ Vite umieszcza
+adres API w plikach wynikowych podczas kompilacji.
+
+W **Web Service → Environment** ustaw ALLOWED_ORIGINS na adres Static Site
+(lub jego własnej domeny), np. https://ADRES-FRONTENDU.onrender.com.
+To dwa różne adresy: frontend wskazuje backend, a backend dopuszcza origin frontendu.
+Po zmianie ALLOWED_ORIGINS uruchom backend ponownie.
+
+Lokalnie skopiuj główny .env.example do .env.local i uruchom npm run dev
+w katalogu głównym; backend uruchom osobno zgodnie z instrukcją powyżej.
+
+Komponent pobiera maksymalnie 25 wpisów, wyświetla po 6, obsługuje pusty wynik,
+błąd z ponowieniem oraz dane z cache oznaczone stale. Nie pobiera starszych stron
+z Facebooka. Token Facebooka pozostaje wyłącznie w backendzie.

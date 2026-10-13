@@ -115,3 +115,30 @@ test('HTTP routes, CORS, limits, health, methods and sanitized failure', async (
   assert.equal(error.headers.get('retry-after'), '60');
   assert.ok(!(await error.text()).includes('test-secret'));
 });
+
+test('logs only numeric Meta diagnostics, never upstream messages or tokens', async () => {
+  const logs = [];
+  const service = new FacebookPostsService(config, { warn: value => logs.push(value),
+    fetchImpl: async () => ({ ok: false, status: 400, json: async () => ({
+      error: { code: 190, error_subcode: 463, message: 'test-secret', fbtrace_id: 'private-trace' }
+    }) }) });
+  await assert.rejects(service.getPosts(), /News unavailable/);
+  assert.match(logs[0], /"httpStatus":400/);
+  assert.match(logs[0], /"code":190/);
+  assert.match(logs[0], /"subcode":463/);
+  assert.ok(!logs[0].includes('test-secret'));
+  assert.ok(!logs[0].includes('private-trace'));
+});
+
+test('distinguishes timeout and invalid upstream response in safe logs', async () => {
+  for (const [fetchImpl, stage] of [
+    [async () => { throw new DOMException('test-secret', 'TimeoutError'); }, 'timeout'],
+    [async () => ({ status: 502, ok: false, json: async () => { throw new Error('test-secret'); } }), 'response'],
+  ]) {
+    const logs = [];
+    const service = new FacebookPostsService(config, { fetchImpl, warn: value => logs.push(value) });
+    await assert.rejects(service.getPosts());
+    assert.ok(logs[0].includes('"stage":"' + stage + '"'));
+    assert.ok(!logs[0].includes('test-secret'));
+  }
+});

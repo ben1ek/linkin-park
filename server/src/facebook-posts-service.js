@@ -22,15 +22,22 @@ export class FacebookPostsService {
     const url = new URL('https://graph.facebook.com/' + version + '/' + pageId + '/posts');
     url.searchParams.set('fields', 'id,message,created_time,permalink_url,full_picture');
     url.searchParams.set('limit', '25');
+    const diagnostic = { stage: 'network' };
     try {
       const response = await this.fetch(url, {
         headers: { Authorization: 'Bearer ' + token },
         signal: AbortSignal.timeout(10_000),
         redirect: 'error',
       });
-      if (!response.ok) throw new Error('Upstream HTTP error');
+      diagnostic.stage = 'response';
+      diagnostic.httpStatus = response.status;
       const body = await response.json();
-      if (body.error || !Array.isArray(body.data)) throw new Error('Invalid upstream response');
+      diagnostic.stage = 'graph';
+      if (Number.isInteger(body?.error?.code)) diagnostic.code = body.error.code;
+      if (Number.isInteger(body?.error?.error_subcode)) diagnostic.subcode = body.error.error_subcode;
+      if (!response.ok) throw new Error('Upstream HTTP error');
+      if (!body || body.error || !Array.isArray(body.data)) throw new Error('Invalid upstream response');
+      diagnostic.stage = 'mapping';
       const data = body.data.map(post => {
         if (!post || typeof post.id !== 'string' || typeof post.created_time !== 'string'
           || !Number.isFinite(Date.parse(post.created_time))) throw new Error('Invalid post');
@@ -44,10 +51,11 @@ export class FacebookPostsService {
       });
       this.cache = { data, fetchedAt: this.now() };
       this.retryAt = 0;
-    } catch {
+    } catch (error) {
+      if (error?.name === 'TimeoutError') diagnostic.stage = 'timeout';
       this.retryAt = this.now() + RETRY_DELAY;
       // Never log Meta responses, request URLs, or tokens.
-      this.warn('Facebook posts refresh failed; retry delayed for 60 seconds.');
+      this.warn('Facebook posts refresh failed; retry delayed for 60 seconds. ' + JSON.stringify(diagnostic));
     }
   }
 
