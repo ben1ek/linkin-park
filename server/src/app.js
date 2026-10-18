@@ -26,8 +26,8 @@ export function createApp({ service, origins }) {
     const limits = url.searchParams.getAll('limit');
     const raw = limits[0] ?? '6';
     if ([...url.searchParams.keys()].some(key => key !== 'limit') || limits.length > 1
-      || !/^\d+$/.test(raw) || Number(raw) < 1 || Number(raw) > 25) {
-      return send(400, { error: 'Use only limit, an integer from 1 to 25' });
+      || !/^\d+$/.test(raw) || Number(raw) < 1 || Number(raw) > 30) {
+      return send(400, { error: 'Use only limit, an integer from 1 to 30' });
     }
     try { send(200, await service.getPosts(Number(raw))); }
     catch {

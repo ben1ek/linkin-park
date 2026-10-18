@@ -21,7 +21,7 @@ export class FacebookPostsService {
     const { pageId, token, version } = this.config;
     const url = new URL('https://graph.facebook.com/' + version + '/' + pageId + '/posts');
     url.searchParams.set('fields', 'id,message,created_time,permalink_url,full_picture');
-    url.searchParams.set('limit', '25');
+    url.searchParams.set('limit', '30');
     const diagnostic = { stage: 'network' };
     try {
       const response = await this.fetch(url, {
@@ -60,7 +60,7 @@ export class FacebookPostsService {
   }
 
   async getPosts(limit = 6) {
-    if (!Number.isInteger(limit) || limit < 1 || limit > 25) throw new Error('Invalid limit');
+    if (!Number.isInteger(limit) || limit < 1 || limit > 30) throw new Error('Invalid limit');
     if ((!this.cache || this.now() - this.cache.fetchedAt >= TTL) && this.now() >= this.retryAt) {
       if (!this.pending) this.pending = this.refresh().finally(() => { this.pending = null; });
       await this.pending;

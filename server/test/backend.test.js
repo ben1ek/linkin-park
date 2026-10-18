@@ -15,6 +15,7 @@ test('maps posts, omits upstream paging, caches across limits and coalesces conc
   const service = new FacebookPostsService(config, { fetchImpl: async (url, options) => {
     calls++;
     assert.equal(url.hostname, 'graph.facebook.com');
+    assert.equal(url.searchParams.get('limit'), '30');
     assert.equal(url.searchParams.has('access_token'), false);
     assert.equal(options.headers.Authorization, 'Bearer test-secret');
     assert.ok(options.signal);
@@ -101,7 +102,7 @@ test('HTTP routes, CORS, limits, health, methods and sanitized failure', async (
   const ok = await get('/api/news?limit=2', { headers: { Origin: 'https://example.com' } });
   assert.equal(ok.headers.get('access-control-allow-origin'), 'https://example.com');
   assert.equal((await ok.json()).limit, 2);
-  for (const path of ['?limit=0', '?limit=26', '?limit=1.2', '?limit=2&limit=3', '?access_token=secret']) {
+  for (const path of ['?limit=0', '?limit=31', '?limit=1.2', '?limit=2&limit=3', '?access_token=secret']) {
     assert.equal((await get('/api/news' + path)).status, 400);
   }
   assert.equal((await get('/api/news', { headers: { Origin: 'https://evil.example' } })).status, 403);

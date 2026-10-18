@@ -54,7 +54,7 @@ https://render.com/docs/free
 
 ## Kontrakt API
 
-GET /api/news?limit=6 — limit 1–25, domyślnie 6. Najnowsze 25 wpisów,
+GET /api/news?limit=6 — limit 1–30, domyślnie 6. Najnowsze 30 wpisów,
 bez paginacji starszych postów w tej wersji.
 
 ~~~json
@@ -103,6 +103,6 @@ Po zmianie ALLOWED_ORIGINS uruchom backend ponownie.
 Lokalnie skopiuj główny .env.example do .env.local i uruchom npm run dev
 w katalogu głównym; backend uruchom osobno zgodnie z instrukcją powyżej.
 
-Komponent pobiera maksymalnie 25 wpisów, wyświetla po 6, obsługuje pusty wynik,
+Komponent pobiera maksymalnie 30 wpisów, wyświetla po 6, obsługuje pusty wynik,
 błąd z ponowieniem oraz dane z cache oznaczone stale. Nie pobiera starszych stron
 z Facebooka. Token Facebooka pozostaje wyłącznie w backendzie.

@@ -6,7 +6,7 @@ export async function fetchNews(signal: AbortSignal): Promise<{ data: NewsItem[]
   const url = new URL(base);
   if (!['https:', 'http:'].includes(url.protocol)) throw new Error('Invalid API URL');
   url.pathname = '/api/news';
-  url.search = '?limit=25';
+  url.search = '?limit=30';
   url.hash = '';
   const response = await fetch(url, { signal });
   if (!response.ok) throw new Error('News request failed');
