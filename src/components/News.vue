@@ -1,7 +1,7 @@
 <template>
   <div :id="String(newsItem.id)" class="news d-flex">
     <div class="news_multimediaContainer">
-      <v-img :src="newsItem.multimedia || 'src/assets/members.webp'" :width="250" :height="200" cover @click="openArticle" />
+      <v-img :src="newsItem.multimedia || placeholderImage" :width="250" :height="200" cover @click="openArticle" />
     </div>
     <div class="news_contentContainer d-flex flex-column justify-space-evenly flex-grow-1">
       <div v-if="publicationDate" class="news_publicationDate d-flex align-center">
@@ -19,6 +19,7 @@
 <script lang="ts">
 import { Component, Vue, toNative, Prop } from 'vue-facing-decorator';
 import { NewsItem } from '@/model/NewsItem';
+import placeholderImage from '../assets/members.webp';
 
 @Component({
     name: 'News',
@@ -33,6 +34,10 @@ class News extends Vue {
     return Number.isFinite(date.getTime())
       ? date.toLocaleDateString(this.$i18n.locale === 'pl' ? 'pl-PL' : 'en-GB')
       : '';
+  }
+
+  get placeholderImage(): string {
+    return placeholderImage;
   }
 
   openArticle(): void {
