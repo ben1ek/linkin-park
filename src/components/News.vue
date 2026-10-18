@@ -32,7 +32,7 @@ class News extends Vue {
     const date = new Date(this.newsItem.publishedAt);
 
     return Number.isFinite(date.getTime())
-      ? date.toLocaleDateString(this.$i18n.locale === 'pl' ? 'pl-PL' : 'en-GB')
+      ? date.toLocaleDateString(this.$i18n.locale === 'pl' ? 'pl-PL' : 'en-US')
       : '';
   }
 

@@ -11,7 +11,7 @@
       <div class="newsContainer_newsItems d-flex flex-column">
         <news v-for="newsItem in newsItems.slice(0, visibleCount)" :key="newsItem.id" :newsItem="newsItem" />
       </div>
-      <v-btn v-if="visibleCount < newsItems.length" append-icon="mdi-chevron-triple-right" :ripple="false" variant="outlined" class="mx-auto mt-6" @click="visibleCount += 6">
+      <v-btn append-icon="mdi-chevron-triple-right" :ripple="false" variant="outlined" class="mx-auto mt-6" @click="viewMore">
         {{ $t('newsFeed.more') }}
       </v-btn>
     </template>
@@ -25,6 +25,8 @@ import { fetchNews } from '../services/NewsService';
 
 @Component({ name: 'NewsContainer' })
 class NewsContainer extends Vue {
+  readonly FACEBOOK_URL = 'https://www.facebook.com/LPPoland';
+
   newsItems: NewsItem[] = [];
 
   visibleCount = 6;
@@ -43,6 +45,14 @@ class NewsContainer extends Vue {
 
   beforeUnmount() {
     this.controller?.abort();
+  }
+
+  viewMore(): void {
+    if (this.visibleCount < this.newsItems.length) {
+      this.visibleCount += 6;
+    } else {
+      window.open(this.FACEBOOK_URL, '_blank');
+    }
   }
 
   async loadNews(): Promise<void> {
