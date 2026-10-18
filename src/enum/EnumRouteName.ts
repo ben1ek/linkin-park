@@ -1,0 +1,15 @@
+export enum EnumRouteName {
+  HOME = 'home',
+  ABOUT_BAND = 'aboutBand',
+  ABOUT_SITE = 'aboutSite',
+  DISCOGRAPHY = 'discography',
+  STUDIO_ALBUMS = 'studioAlbums',
+  HYBRID_THEORY = 'hybridTheory',
+  METEORA = 'meteora',
+  MINUTES_TO_MIDNIGHT = 'minutesToMidnight',
+  A_THOUSAND_SUNS = 'aThousandSuns',
+  LIVING_THINGS = 'livingThings',
+  THE_HUNTING_PARTY = 'theHuntingParty',
+  ONE_MORE_LIGHT = 'oneMoreLight',
+  FROM_ZERO = 'fromZero',
+}

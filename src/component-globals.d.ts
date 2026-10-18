@@ -1,12 +1,13 @@
 import type { Emitter } from 'mitt';
 import type { VueI18n } from 'vue-i18n';
-import type { Router } from 'vue-router';
+import type { Router, RouteLocationNormalizedLoaded } from 'vue-router';
 
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
     $t: VueI18n['t'];
     $i18n: VueI18n;
     $router: Router;
+    $route: RouteLocationNormalizedLoaded;
     emitter: Emitter<Record<string | symbol, unknown>>;
   }
 }

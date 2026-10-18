@@ -1,3 +1,5 @@
+import type { RouteLocationRaw } from 'vue-router';
+
 export class ImageTile {
   src = '';
 
@@ -5,7 +7,7 @@ export class ImageTile {
 
   description = '';
 
-  link = '';
+  link: RouteLocationRaw | null = null;
 
   constructor(data?: Partial<ImageTile>) {
     if (data) {

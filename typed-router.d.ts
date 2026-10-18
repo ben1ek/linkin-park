@@ -30,13 +30,6 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/a-thousand-suns': RouteRecordInfo<
-      '/a-thousand-suns',
-      '/a-thousand-suns',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     '/about-band': RouteRecordInfo<
       '/about-band',
       '/about-band',
@@ -51,65 +44,72 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/discography': RouteRecordInfo<
+    '/discography/': RouteRecordInfo<
+      '/discography/',
       '/discography',
-      '/discography',
       Record<never, never>,
       Record<never, never>,
       | never
     >,
-    '/from-zero': RouteRecordInfo<
-      '/from-zero',
-      '/from-zero',
+    '/discography/studio-albums/': RouteRecordInfo<
+      '/discography/studio-albums/',
+      '/discography/studio-albums',
       Record<never, never>,
       Record<never, never>,
       | never
     >,
-    '/hybrid-theory': RouteRecordInfo<
-      '/hybrid-theory',
-      '/hybrid-theory',
+    '/discography/studio-albums/a-thousand-suns': RouteRecordInfo<
+      '/discography/studio-albums/a-thousand-suns',
+      '/discography/studio-albums/a-thousand-suns',
       Record<never, never>,
       Record<never, never>,
       | never
     >,
-    '/living-things': RouteRecordInfo<
-      '/living-things',
-      '/living-things',
+    '/discography/studio-albums/from-zero': RouteRecordInfo<
+      '/discography/studio-albums/from-zero',
+      '/discography/studio-albums/from-zero',
       Record<never, never>,
       Record<never, never>,
       | never
     >,
-    '/meteora': RouteRecordInfo<
-      '/meteora',
-      '/meteora',
+    '/discography/studio-albums/hybrid-theory': RouteRecordInfo<
+      '/discography/studio-albums/hybrid-theory',
+      '/discography/studio-albums/hybrid-theory',
       Record<never, never>,
       Record<never, never>,
       | never
     >,
-    '/minutes-to-midnight': RouteRecordInfo<
-      '/minutes-to-midnight',
-      '/minutes-to-midnight',
+    '/discography/studio-albums/living-things': RouteRecordInfo<
+      '/discography/studio-albums/living-things',
+      '/discography/studio-albums/living-things',
       Record<never, never>,
       Record<never, never>,
       | never
     >,
-    '/one-more-light': RouteRecordInfo<
-      '/one-more-light',
-      '/one-more-light',
+    '/discography/studio-albums/meteora': RouteRecordInfo<
+      '/discography/studio-albums/meteora',
+      '/discography/studio-albums/meteora',
       Record<never, never>,
       Record<never, never>,
       | never
     >,
-    '/studio-albums': RouteRecordInfo<
-      '/studio-albums',
-      '/studio-albums',
+    '/discography/studio-albums/minutes-to-midnight': RouteRecordInfo<
+      '/discography/studio-albums/minutes-to-midnight',
+      '/discography/studio-albums/minutes-to-midnight',
       Record<never, never>,
       Record<never, never>,
       | never
     >,
-    '/the-hunting-party': RouteRecordInfo<
-      '/the-hunting-party',
-      '/the-hunting-party',
+    '/discography/studio-albums/one-more-light': RouteRecordInfo<
+      '/discography/studio-albums/one-more-light',
+      '/discography/studio-albums/one-more-light',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/discography/studio-albums/the-hunting-party': RouteRecordInfo<
+      '/discography/studio-albums/the-hunting-party',
+      '/discography/studio-albums/the-hunting-party',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -133,12 +133,6 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
-    'src/pages/a-thousand-suns.vue': {
-      routes:
-        | '/a-thousand-suns'
-      views:
-        | never
-    }
     'src/pages/about-band.vue': {
       routes:
         | '/about-band'
@@ -151,57 +145,63 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
-    'src/pages/discography.vue': {
+    'src/pages/discography/index.vue': {
       routes:
-        | '/discography'
+        | '/discography/'
       views:
         | never
     }
-    'src/pages/from-zero.vue': {
+    'src/pages/discography/studio-albums/index.vue': {
       routes:
-        | '/from-zero'
+        | '/discography/studio-albums/'
       views:
         | never
     }
-    'src/pages/hybrid-theory.vue': {
+    'src/pages/discography/studio-albums/a-thousand-suns.vue': {
       routes:
-        | '/hybrid-theory'
+        | '/discography/studio-albums/a-thousand-suns'
       views:
         | never
     }
-    'src/pages/living-things.vue': {
+    'src/pages/discography/studio-albums/from-zero.vue': {
       routes:
-        | '/living-things'
+        | '/discography/studio-albums/from-zero'
       views:
         | never
     }
-    'src/pages/meteora.vue': {
+    'src/pages/discography/studio-albums/hybrid-theory.vue': {
       routes:
-        | '/meteora'
+        | '/discography/studio-albums/hybrid-theory'
       views:
         | never
     }
-    'src/pages/minutes-to-midnight.vue': {
+    'src/pages/discography/studio-albums/living-things.vue': {
       routes:
-        | '/minutes-to-midnight'
+        | '/discography/studio-albums/living-things'
       views:
         | never
     }
-    'src/pages/one-more-light.vue': {
+    'src/pages/discography/studio-albums/meteora.vue': {
       routes:
-        | '/one-more-light'
+        | '/discography/studio-albums/meteora'
       views:
         | never
     }
-    'src/pages/studio-albums.vue': {
+    'src/pages/discography/studio-albums/minutes-to-midnight.vue': {
       routes:
-        | '/studio-albums'
+        | '/discography/studio-albums/minutes-to-midnight'
       views:
         | never
     }
-    'src/pages/the-hunting-party.vue': {
+    'src/pages/discography/studio-albums/one-more-light.vue': {
       routes:
-        | '/the-hunting-party'
+        | '/discography/studio-albums/one-more-light'
+      views:
+        | never
+    }
+    'src/pages/discography/studio-albums/the-hunting-party.vue': {
+      routes:
+        | '/discography/studio-albums/the-hunting-party'
       views:
         | never
     }

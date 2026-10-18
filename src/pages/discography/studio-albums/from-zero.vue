@@ -1,4 +1,4 @@
-<template>
+@assets/<template>
   <main-layout class="studioAlbum">
     <template v-slot:content>
       <app-article>
@@ -11,9 +11,9 @@
 
 <script lang="ts">
 import { Component, Vue, toNative } from 'vue-facing-decorator';
-import { DiscographyAlbum } from '../model/DiscographyAlbum';
+import { DiscographyAlbum } from '@/model/DiscographyAlbum';
 import { Song } from '@/model/Song';
-import cover from '../assets/studio-albums/from-zero.webp';
+import cover from '@assets//studio-albums/from-zero.webp';
 
 @Component
 class FromZero extends Vue {
@@ -40,7 +40,7 @@ class FromZero extends Vue {
       new Song({ name: 'Good Things Go', writers: 'Linkin Park, Jake Torrey', length: '3:29', url: 'https://www.youtube.com/embed/7ooOL42f-2s' }),
       new Song({ name: 'Up From The Bottom (Bonus Track)', writers: 'Linkin Park', length: '3:03', url: 'https://www.youtube.com/embed/z41G40cBsrY' }),
       new Song({ name: 'Unshatter (Bonus Track)', writers: 'Linkin Park, Jake Torrey', length: '3:16', url: 'https://www.youtube.com/embed/GBCMpuqW50g' }),
-      new Song({ name: 'Let You Fade', writers: 'Linkin Park, Elijah Noll', length: '3:28', url: 'https://www.youtube.com/embed/I-vcTugsQXY' }),
+      new Song({ name: 'Let You Fade (Bonus Track)', writers: 'Linkin Park, Elijah Noll', length: '3:28', url: 'https://www.youtube.com/embed/I-vcTugsQXY' }),
     ];
   }
 }

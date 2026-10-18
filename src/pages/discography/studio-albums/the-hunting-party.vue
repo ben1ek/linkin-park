@@ -11,9 +11,9 @@
 
 <script lang="ts">
 import { Component, Vue, toNative } from 'vue-facing-decorator';
-import { DiscographyAlbum } from '../model/DiscographyAlbum';
+import { DiscographyAlbum } from '@/model/DiscographyAlbum';
 import { Song } from '@/model/Song';
-import cover from '../assets/studio-albums/the-hunting-party.webp';
+import cover from '@/assets/studio-albums/the-hunting-party.webp';
 
 @Component
 class TheHuntingParty extends Vue {

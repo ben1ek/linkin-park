@@ -3,7 +3,6 @@ import Components from 'unplugin-vue-components/vite'
 import Vue from '@vitejs/plugin-vue'
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import ViteFonts from 'unplugin-fonts/vite'
-import VueRouter from 'unplugin-vue-router/vite'
 import svgLoader from 'vite-svg-loader'
 
 // Utilities
@@ -27,7 +26,6 @@ const sassLogger: Logger = {
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    VueRouter(),
     Vue({
       template: { transformAssetUrls },
     }),
@@ -59,6 +57,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
     },
     extensions: [
       '.js',

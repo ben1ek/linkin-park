@@ -1,13 +1,13 @@
 <template>
   <nav v-if="!isMobile" class="siteMenu d-flex align-center">
-    <p v-for="(menuItem, index) in siteMenuItems" :key="index" :class="{ 'font-weight-bold': menuItem.active }" class="text-center text-uppercase py-5" @click="openSubpage(menuItem)">{{ $t(menuItem.name) }}</p>
+    <p v-for="(menuItem, index) in siteMenuItems" :key="index" :class="{ 'font-weight-bold': isSubpageActive(menuItem) }" class="text-center text-uppercase py-5" @click="openSubpage(menuItem)">{{ $t(menuItem.name) }}</p>
   </nav>
   <div v-else class="siteMenu mobile mx-5" :class="{ visible: mobileNavigation }">
     <div class="siteMenu_mobileDrawer d-flex justify-space-between pl-6 pr-5 py-5">
       <nav class="siteMenu_menuItems d-flex flex-column justify-space-between py-1">
         <div v-for="(menuItem, index) in siteMenuItems" :key="index" @click="openSubpage(menuItem)" class="d-flex align-center">
           <v-icon :icon="menuItem.icon" :size="30" class="mr-4" />
-          <span :class="{ 'font-weight-bold': menuItem.active }" class="siteMenu_menuItem mobile">{{ $t(menuItem.name) }}</span>
+          <span :class="{ 'font-weight-bold': isSubpageActive(menuItem) }" class="siteMenu_menuItem mobile">{{ $t(menuItem.name) }}</span>
         </div>
       </nav>
       <v-icon icon="mdi-close" size="36" @click="mobileNavigation = false" />
@@ -17,6 +17,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, toNative } from 'vue-facing-decorator';
+import { EnumRouteName } from '@/enum/EnumRouteName';
 import { SiteMenuItem } from '../model/SiteMenuItem';
 import { EnumEventType } from '../enum/EnumEventType';
 
@@ -30,41 +31,25 @@ class SiteMenu extends Vue {
   mobileNavigation = false;
 
   siteMenuItems = [
-    new SiteMenuItem({ name: 'siteMenu.news', icon: 'mdi-newspaper', address: '/' }),
-    new SiteMenuItem({ name: 'siteMenu.aboutBand', icon: 'mdi-account-multiple', address: '/about-band' }),
-    new SiteMenuItem({ name: 'siteMenu.discography', icon: 'mdi-disc', address: '/discography' }),
-    new SiteMenuItem({ name: 'siteMenu.aboutSite', icon: 'mdi-information-outline', address: '/about-site' }),
+    new SiteMenuItem({ name: 'siteMenu.news', icon: 'mdi-newspaper', routeName: EnumRouteName.HOME }),
+    new SiteMenuItem({ name: 'siteMenu.aboutBand', icon: 'mdi-account-multiple', routeName: EnumRouteName.ABOUT_BAND }),
+    new SiteMenuItem({ name: 'siteMenu.discography', icon: 'mdi-disc', routeName: EnumRouteName.DISCOGRAPHY }),
+    new SiteMenuItem({ name: 'siteMenu.aboutSite', icon: 'mdi-information-outline', routeName: EnumRouteName.ABOUT_SITE }),
   ];
 
   created(): void {
     this.emitter.on(EnumEventType.OPEN_NAV_DRAWER, () => this.mobileNavigation = true);
-    this.emitter.on(EnumEventType.OPEN_MAIN_PAGE, () => this.markActivePage(this.siteMenuItems[0]));
-
-    const indexOfMenuItemToMark = this.siteMenuItems.findIndex((menuItem: SiteMenuItem) => this.isSubpageActive(menuItem));
-    if (indexOfMenuItemToMark !== -1) {
-      this.siteMenuItems[indexOfMenuItemToMark].active = true;
-    }
   }
 
   openSubpage(menuItem: SiteMenuItem): void {
-    this.$router.push(menuItem.address);
-    this.markActivePage(menuItem);
+    this.$router.push({ name: menuItem.routeName });
     if (this.isMobile) {
       this.mobileNavigation = false;
     }
   }
 
   isSubpageActive(menuItem: SiteMenuItem): boolean {
-    const pathname = window.location.pathname.replace('/', '');
-    return Boolean(pathname.match(new RegExp(`^${menuItem.address.replace('/', '')}$`)));
-  }
-
-  markActivePage(page: SiteMenuItem): void {
-    this.siteMenuItems.forEach((menuItem: SiteMenuItem, index: number) => this.siteMenuItems[index].active = false);
-    const indexOfMenuItemToMark = this.siteMenuItems.findIndex((menuItem: SiteMenuItem) => menuItem.address === page.address);
-    if (indexOfMenuItemToMark !== -1) {
-      this.siteMenuItems[indexOfMenuItemToMark].active = true;
-    }
+    return this.$route.name === menuItem.routeName;
   }
 }
 

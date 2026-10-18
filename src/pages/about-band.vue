@@ -12,6 +12,7 @@
 <script lang="ts">
 import { Component, Vue, toNative } from 'vue-facing-decorator';
 import { ImageTile } from '@/model/ImageTile';
+import { EnumRouteName } from '@/enum/EnumRouteName';
 import history from '../assets/history.webp';
 import members from '../assets/members.webp';
 import discography from '../assets/discography.webp';
@@ -22,7 +23,7 @@ class AboutBand extends Vue {
     return [
       new ImageTile({ src: history, title: this.$t('aboutBand.history') }),
       new ImageTile({ src: members, title: this.$t('aboutBand.members') }),
-      new ImageTile({ src: discography, title: this.$t('aboutBand.discography'), link: '/discography' }),
+      new ImageTile({ src: discography, title: this.$t('aboutBand.discography'), link: { name: EnumRouteName.DISCOGRAPHY } }),
     ]
   }
 }

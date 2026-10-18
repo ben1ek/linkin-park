@@ -19,6 +19,7 @@
 
 <script lang="ts">
 import { Component, Vue, Setup, toNative } from 'vue-facing-decorator';
+import { EnumRouteName } from '@/enum/EnumRouteName';
 import { useDisplay } from 'vuetify';
 import { EnumEventType } from '../enum/EnumEventType';
 
@@ -27,7 +28,7 @@ import { EnumEventType } from '../enum/EnumEventType';
 })
 class NavBar extends Vue {
   openMainPage(): void {
-    this.$router.push('/');
+    this.$router.push({ name: EnumRouteName.HOME });
     this.emitter.emit(EnumEventType.OPEN_MAIN_PAGE);
   }
 

@@ -10,20 +10,21 @@
 </template>
 
 <script lang="ts">
-import { ImageTile } from "../model/ImageTile";
 import { Component, Vue, toNative } from 'vue-facing-decorator';
-import studioAlbums from '../assets/studio-albums.webp';
-import liveAlbums from '../assets/live-albums.webp';
-import singles from '../assets/singles.webp';
-import lpu from '../assets/lpu.webp';
-import others from '../assets/discography-others.webp';
-import videos from '../assets/discography-videos.webp';
+import { EnumRouteName } from '@/enum/EnumRouteName';
+import { ImageTile } from "@/model/ImageTile";
+import studioAlbums from '@assets/studio-albums.webp';
+import liveAlbums from '@assets/live-albums.webp';
+import singles from '@assets/singles.webp';
+import lpu from '@assets/lpu.webp';
+import others from '@assets/discography-others.webp';
+import videos from '@assets/discography-videos.webp';
 
 @Component
 class Discography extends Vue {
   get tiles(): ImageTile[] {
     return [
-      new ImageTile({ src: studioAlbums, title: this.$t('discography.studioAlbums'), link: '/studio-albums' }),
+      new ImageTile({ src: studioAlbums, title: this.$t('discography.studioAlbums'), link: { name: EnumRouteName.STUDIO_ALBUMS } }),
       new ImageTile({ src: liveAlbums, title: this.$t('discography.liveAlbums') }),
       new ImageTile({ src: singles, title: this.$t('discography.singles') }),
       new ImageTile({ src: lpu, title: this.$t('discography.lpu') }),

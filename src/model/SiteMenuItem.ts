@@ -1,11 +1,12 @@
+import { EnumRouteName } from '@/enum/EnumRouteName';
+
 export class SiteMenuItem {
   name = '';
 
   icon = '';
 
-  address = '';
+  routeName: EnumRouteName = EnumRouteName.HOME;
 
-  active?: boolean;
 
   constructor(data?: Partial<SiteMenuItem>) {
     if (data) {

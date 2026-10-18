@@ -12,6 +12,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, toNative } from 'vue-facing-decorator';
+import type { RouteLocationRaw } from 'vue-router';
 
 @Component({
     name: 'ImageTile',
@@ -36,7 +37,7 @@ class ImageTile extends Vue {
   description!: string;
 
   @Prop()
-  link!: string;
+  link!: RouteLocationRaw | null;
 
   openLink(): void {
     if (!this.link) {

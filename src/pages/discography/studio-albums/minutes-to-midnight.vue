@@ -11,9 +11,9 @@
 
 <script lang="ts">
 import { Component, Vue, toNative } from 'vue-facing-decorator';
-import { DiscographyAlbum } from '../model/DiscographyAlbum';
+import { DiscographyAlbum } from '@/model/DiscographyAlbum';
 import { Song } from '@/model/Song';
-import cover from '../assets/studio-albums/minutes-to-midnight.webp';
+import cover from '@/assets/studio-albums/minutes-to-midnight.webp';
 
 @Component
 class MinutesToMidnight extends Vue {
