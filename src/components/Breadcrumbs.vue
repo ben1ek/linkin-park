@@ -5,7 +5,7 @@
       <v-icon v-if="index < path.length - 1" icon="mdi-chevron-right" color="#a9a7ad" />
     </div>
   </div>
-  <div v-else class="breadcrumbs d-flex align-center">
+  <div v-else-if="previousSite" class="breadcrumbs d-flex align-center">
     <v-icon icon="mdi-chevron-left" color="#a9a7ad" />
     <span @click="openSubpage(previousSite)">{{ $t(`EnumRouteName.${previousSite}`) }}</span>
   </div>
