@@ -1,12 +1,8 @@
 <template>
-  <main-layout class="discography">
-    <template v-slot:content>
-      <app-article :header="$t('discography.discography')" :description="$t('discography.description')">
-        <under-construction-alert />
-        <image-tiles-group :tiles="tiles" />
-      </app-article>
-    </template>
-  </main-layout>
+  <app-article :header="$t('discography.discography')" :description="$t('discography.description')">
+    <under-construction-alert />
+    <image-tiles-group :tiles="tiles" />
+  </app-article>
 </template>
 
 <script lang="ts">

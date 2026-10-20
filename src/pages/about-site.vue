@@ -1,11 +1,7 @@
 <template>
-  <main-layout class="aboutSite">
-    <template v-slot:content>
-      <app-article :header="$t('aboutSite.aboutSite')" :description="$t('aboutSite.description')">
-        <under-construction-alert />
-      </app-article>
-    </template>
-  </main-layout>
+  <app-article :header="$t('aboutSite.aboutSite')" :description="$t('aboutSite.description')">
+    <under-construction-alert />
+  </app-article>
 </template>
 
 <script lang="ts">

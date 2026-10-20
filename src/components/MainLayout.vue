@@ -1,6 +1,7 @@
 <template>
   <div class="mainLayout d-flex pb-10">
     <div class="mainLayout_content" :class="{ 'mobile' : isMobile }">
+      <breadcrumbs v-if="$route.meta.breadcrumbs" :path="$route.meta.breadcrumbs" class="mb-3" />
       <slot name="content" />
     </div>
     <aside class="mainLayout_sidebar" :class="{ 'mobile' : isMobile }">

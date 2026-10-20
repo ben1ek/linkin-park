@@ -1,19 +1,15 @@
-@assets/<template>
-  <main-layout class="studioAlbum">
-    <template v-slot:content>
-      <app-article>
-        <under-construction-alert />
-        <album :album="album" />
-      </app-article>
-    </template>
-  </main-layout>
+<template>
+  <app-article>
+    <under-construction-alert />
+    <album :album="album" />
+  </app-article>
 </template>
 
 <script lang="ts">
 import { Component, Vue, toNative } from 'vue-facing-decorator';
 import { DiscographyAlbum } from '@/model/DiscographyAlbum';
 import { Song } from '@/model/Song';
-import cover from '@assets//studio-albums/from-zero.webp';
+import cover from '@assets/studio-albums/from-zero.webp';
 
 @Component
 class FromZero extends Vue {

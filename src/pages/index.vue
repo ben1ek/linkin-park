@@ -1,11 +1,7 @@
 <template>
-  <main-layout class="mainPage">
-    <template v-slot:content>
-      <app-article :header="$t('siteMenu.news')">
-        <news-container class="py-2"/>
-      </app-article>
-    </template>
-  </main-layout>
+  <app-article :header="$t('siteMenu.news')">
+    <news-container class="py-2"/>
+  </app-article>
 </template>
 
 <script lang="ts" setup>

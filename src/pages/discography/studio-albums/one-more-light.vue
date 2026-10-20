@@ -1,12 +1,8 @@
 <template>
-  <main-layout class="studioAlbum">
-    <template v-slot:content>
-      <app-article>
-        <under-construction-alert />
-        <album :album="album" />
-      </app-article>
-    </template>
-  </main-layout>
+  <app-article>
+    <under-construction-alert />
+    <album :album="album" />
+  </app-article>
 </template>
 
 <script lang="ts">
